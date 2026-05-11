@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// untuk halaman utama
 Route::get('/', function () {
-    return view('welcome');
+    return view('page.home');
 });
 
 Route::middleware([
