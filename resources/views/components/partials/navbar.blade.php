@@ -57,7 +57,7 @@
 
                 <!-- BUTTON -->
                 <button class="px-6 py-3 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold shadow-xl shadow-orange-200 transition">
-                    Mulai Belajar
+                    <a href="{{ route("login") }}">Mulai belajar</a>
                 </button>
 
             </div>
