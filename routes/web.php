@@ -7,6 +7,12 @@ Route::get('/', function () {
     return view('page.home');
 });
 
+
+// untuk halaman daftar guru
+Route::get("daftar-guru", function () {
+    return view('page.daftar-guru');
+})->name('daftar-guru');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -593,7 +593,6 @@
 
                         <textarea rows="6" placeholder="Pesan"
                             class="w-full px-5 py-4 rounded-2xl border border-slate-200 outline-none focus:border-orange-500"></textarea>
-
                         <button
                             class="w-full h-14 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-bold transition">
                             Kirim Pesan
