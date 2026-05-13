@@ -5,7 +5,7 @@
             <div class="h-20 px-8 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-xl shadow-sm flex items-center justify-between">
 
                 <!-- LOGO -->
-                <a href="#beranda" class="flex items-center gap-3">
+                <a href="{{ route('home') }}" class="flex items-center gap-3">
 
                     <div class="w-12 h-12 rounded-2xl bg-orange-500 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-orange-200">
                         P

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 // untuk halaman utama
 Route::get('/', function () {
     return view('page.home');
-});
+})->name('home');
 
 
 // untuk halaman daftar guru
