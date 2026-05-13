@@ -13,4 +13,8 @@ class Guru extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function MataPelajarans(){
+        return $this->belongsToMany(MataPelajaran::class,"guru_mata_pelajaran","guru_id","mata_pelajaran_id");
+    }
 }
