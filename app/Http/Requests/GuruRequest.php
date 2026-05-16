@@ -30,6 +30,8 @@ class GuruRequest extends FormRequest
             "password" => ['required', 'string', Password::default(), 'confirmed'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
             "no_hp" => ['required'],
+            "mata_pelajarans" => ['required', 'array'],
+            "mata_pelajarans.*" => ['exists:mata_pelajaran,id'],
             "jk" => ['required', "in:Laki-laki,Perempuan"],
             "alamat" => ['required'],
             "cv" => ['required', 'file', 'mimes:pdf'],

@@ -118,7 +118,7 @@
                 <div class="mt-3 grid gap-3 sm:grid-cols-2">
                    @foreach ($mapel as $ma)
                         <label class="flex items-center gap-3 rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700 transition hover:border-stone-300">
-                        <input type="checkbox" name="subjects[]" value="{{ $ma->nama_mapel }}" class="h-4 w-4 rounded border-stone-300 text-stone-800 focus:ring-stone-500" {{ is_array(old('subjects')) && in_array('Matematika', old('subjects')) ? 'checked' : '' }}>
+                        <input type="checkbox" name="mata_pelajarans[]" value="{{ $ma->id }}" class="h-4 w-4 rounded border-stone-300 text-stone-800 focus:ring-stone-500" {{ is_array(old('mata_pelajarans')) && in_array($ma->nama_mapel, old('mata_pelajarans')) ? 'checked' : '' }}>
                         {{ $ma->nama_mapel }}
                     </label>
                    @endforeach
