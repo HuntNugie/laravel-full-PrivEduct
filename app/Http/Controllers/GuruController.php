@@ -13,6 +13,10 @@ class GuruController extends Controller
     {
     }
 
+    public function index(){
+        return view("page.isLogin.daftar-guru-admin");
+    }
+
     public function create(){
         return view("auth.register-guru");
     }

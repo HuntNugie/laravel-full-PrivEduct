@@ -19,7 +19,7 @@
                 <x-label for="email" value="Email" class="text-sm font-medium text-stone-700" />
 
                 <x-input id="email"
-                    class="mt-2 block w-full rounded-xl border-stone-300 bg-stone-50 focus:border-stone-500 focus:ring-stone-500"
+                    class="text-black mt-2 block w-full rounded-xl border-stone-300 bg-stone-50 focus:border-stone-500 focus:ring-stone-500"
                     type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
@@ -27,7 +27,7 @@
                 <x-label for="password" value="Password" class="text-sm font-medium text-stone-700" />
 
                 <x-input id="password"
-                    class="mt-2 block w-full rounded-xl border-stone-300 bg-stone-50 focus:border-stone-500 focus:ring-stone-500"
+                    class="text-black mt-2 block w-full rounded-xl border-stone-300 bg-stone-50 focus:border-stone-500 focus:ring-stone-500"
                     type="password" name="password" required autocomplete="current-password" />
             </div>
 

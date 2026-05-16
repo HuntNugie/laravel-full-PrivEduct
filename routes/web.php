@@ -16,6 +16,8 @@ Route::get("daftar-guru", function () {
 
 // jang routing guru
 Route::prefix("guru")->group(function(){
+    // jang nampilkeun daftar guru admin
+    Route::get("/",[GuruController::class,"index"])->name("guru")->middleware(["auth","admin"]);
     // jang nampilkeun form register
     Route::get("/register",[GuruController::class,"create"])->name("guru.create");
     // jang aksi nambihkeun guru

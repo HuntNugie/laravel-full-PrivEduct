@@ -35,22 +35,7 @@
                     @if (auth()->user()->role === 'admin')
                       <x-partials.navbar-admin/>
                     @elseif (auth()->user()->role === 'guru')
-                       <x-nav-link href="{{ route('dashboard') }}"
-                        :active="request()->routeIs('dashboard')">
-                        Dashboard
-                    </x-nav-link>
-
-                    <x-nav-link href="#">
-                        My Classes
-                    </x-nav-link>
-
-                    <x-nav-link href="#">
-                        Schedule
-                    </x-nav-link>
-
-                    <x-nav-link href="#">
-                        Tutors
-                    </x-nav-link>
+                      <x-partials.navbar-guru/>
                     @elseif (auth()->user()->role == "user")
                       <x-partials.navbar-user/>
                     @endif
@@ -91,7 +76,13 @@
                                     </p>
 
                                     <span class="text-xs text-stone-500">
+                                        @if(auth()->user()->isUser())
                                         Student Account
+                                        @elseif(auth()->user()->isAdmin())
+                                        Admine Account
+                                        @else
+                                        Guru Account
+                                        @endif
                                     </span>
 
                                 </div>

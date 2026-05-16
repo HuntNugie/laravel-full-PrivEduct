@@ -82,4 +82,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Guru::class, 'user_id', 'id');
     }
+
+    public function isUser(){
+        return $this->role === "user";
+    }
+    public function isAdmin(){
+        return $this->role === "admin";
+    }
+    public function isGuru(){
+        return $this->role === "guru";
+    }
 }
