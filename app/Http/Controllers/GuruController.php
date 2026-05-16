@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GuruRequest;
+use App\Models\MataPelajaran;
 use App\Service\GuruService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,9 @@ class GuruController extends Controller
     }
 
     public function create(){
-        return view("auth.register-guru");
+        $mapel = MataPelajaran::all();
+
+        return view("auth.register-guru",["mapel"=>$mapel]);
     }
 
     public function store(GuruRequest $request){

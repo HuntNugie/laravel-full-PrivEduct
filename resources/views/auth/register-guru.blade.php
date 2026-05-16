@@ -111,6 +111,21 @@
                 </select>
             </div>
 
+            {{-- SUBJECTS --}}
+            <div>
+                <x-label value="Mata Pelajaran yang di kuasai" class="text-sm font-medium text-stone-700" />
+
+                <div class="mt-3 grid gap-3 sm:grid-cols-2">
+                   @foreach ($mapel as $ma)
+                        <label class="flex items-center gap-3 rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700 transition hover:border-stone-300">
+                        <input type="checkbox" name="subjects[]" value="{{ $ma->nama_mapel }}" class="h-4 w-4 rounded border-stone-300 text-stone-800 focus:ring-stone-500" {{ is_array(old('subjects')) && in_array('Matematika', old('subjects')) ? 'checked' : '' }}>
+                        {{ $ma->nama_mapel }}
+                    </label>
+                   @endforeach
+
+                </div>
+            </div>
+
             {{-- CV --}}
             <div>
                 <x-label for="cv" value="Link CV / Portofolio" class="text-sm font-medium text-stone-700" />
