@@ -23,13 +23,16 @@ class GuruService
             $input["cv"] = $cv;
         }
         // setelah itu tambahkan yang relasi nya 
-        $user->guru()->create([
+       $guru =  $user->guru()->create([
             "no_hp" => $input["no_hp"],
             "jenis_kelamin" => $input["jk"],
             "alamat" => $input["alamat"],
             "lulusan" => $input["lulusan"],
             "cv" => $input["cv"]
         ]);
+
+        // setelah itu menambahkan mata pelajaran yang di kuasai
+        $guru->MataPelajarans()->sync($input["mata_pelajarans"]);
 
         return $user;
 
