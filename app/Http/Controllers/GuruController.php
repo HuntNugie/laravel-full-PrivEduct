@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GuruAdminRequest;
 use App\Http\Requests\GuruRequest;
 use App\Models\MataPelajaran;
 use App\Service\GuruService;
@@ -14,18 +15,35 @@ class GuruController extends Controller
     {
     }
 
-    public function index(){
+    public function index()
+    {
         return view("page.admin.daftar-guru-admin");
     }
 
-    public function registerForm(){
+    public function create()
+    {
         $mapel = MataPelajaran::all();
-
-        return view("auth.register-guru",["mapel"=>$mapel]);
+        return view("page.admin.add-guru", ["mapel" => $mapel]);
     }
 
-    public function registerStore(GuruRequest $request){
-        $user = $this->service->register($request->validated(),$request->file("cv"));
+    public function store(GuruAdminRequest $request)
+    {
+        $this->service->addGuru($request->validated());
+        return redirect()->route("guru");
+    }
+
+
+    // ini untuk di halaman register guru yang bisa di akses semua orang
+    public function registerForm()
+    {
+        $mapel = MataPelajaran::all();
+
+        return view("auth.register-guru", ["mapel" => $mapel]);
+    }
+
+    public function registerStore(GuruRequest $request)
+    {
+        $user = $this->service->register($request->validated(), $request->file("cv"));
         Auth::login($user);
         return redirect()->route("dashboard");
     }

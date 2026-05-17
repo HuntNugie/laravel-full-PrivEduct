@@ -11,18 +11,15 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
 
-                        <div
-                            class="size-10 rounded-2xl bg-stone-800 flex items-center justify-center text-white font-semibold text-sm">
-                            PE
-                        </div>
+                        <img src="{{ asset('logo.jpeg') }}" alt="PrivEdu" class="size-12 rounded-xl object-cover shadow-sm " />
 
                         <div>
                             <p class="text-sm font-semibold text-stone-800">
-                                PrivEdu
+                                PrivEduct
                             </p>
 
                             <span class="text-xs text-stone-500">
-                                Private Learning
+                                Private Education Platform
                             </span>
                         </div>
 
