@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GuruAdminRequest;
+use App\Http\Requests\GuruEditAdminRequest;
 use App\Http\Requests\GuruRequest;
+use App\Models\Guru;
 use App\Models\MataPelajaran;
 use App\Service\GuruService;
 use Illuminate\Http\Request;
@@ -29,6 +31,17 @@ class GuruController extends Controller
     public function store(GuruAdminRequest $request)
     {
         $this->service->addGuru($request->validated());
+        return redirect()->route("guru");
+    }
+
+    public function edit(Guru $guru){
+        $selected_mapel = $guru->MataPelajarans->pluck("id")->toArray();
+        $mapel = MataPelajaran::all();
+        return view("page.admin.edit-guru",["guru" => $guru,"mapel" => $mapel, "selected_mapel" => $selected_mapel]);
+    }
+
+    public function update(Guru $guru, GuruEditAdminRequest $request){
+        $this->service->updateGuru($request->validated(),$guru);
         return redirect()->route("guru");
     }
 

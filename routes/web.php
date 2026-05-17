@@ -40,6 +40,10 @@ Route::middleware([
             Route::get("/add", [GuruController::class, "create"])->name("guru.create");
             // jang aksi nambihkeun guru
             Route::post("/", [GuruController::class, "store"])->name("guru.store");
+            // jang nampilkeun form edit
+            Route::get("/edit/{guru}",[GuruController::class,"edit"])->name("guru.edit");
+            // jang aksi update guru
+            Route::put("/edit/{guru}",[GuruController::class,"update"])->name("guru.update");
         });
     });
 

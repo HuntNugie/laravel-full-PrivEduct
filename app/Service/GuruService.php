@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Service;
+
+use App\Models\Guru;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 
 class GuruService
 {
-    public function addGuru(array $input)
+    public function addGuru(array $input): User
     {
         // tambahkan dulu ke user
         $user = User::create([
@@ -28,6 +30,23 @@ class GuruService
         $guru->MataPelajarans()->sync($input["mata_pelajarans"]);
         return $user;
     }
+
+    public function updateGuru(array $input, Guru $guru): void
+    {
+        $guru->User()->update([
+            "name" => $input["name"],
+        ]);
+
+        $guru->update([
+            "no_hp" => $input["no_hp"],
+            "jenis_kelamin" => $input["jk"],
+            "alamat" => $input["alamat"],
+            "lulusan" => $input["lulusan"],
+        ]);
+
+        $guru->MataPelajarans()->sync($input["mata_pelajarans"]);
+    }
+
 
 
     public function register(array $input, ?UploadedFile $file): User
