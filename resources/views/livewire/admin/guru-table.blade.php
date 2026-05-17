@@ -66,7 +66,7 @@
                <!-- Body -->
                <tbody class="divide-y divide-stone-100 bg-white">
 
-                   @foreach ($gurus as $guru)
+                   @forelse ($gurus as $guru)
                        <tr class="transition hover:bg-stone-50">
 
                            <td class="px-6 py-5">
@@ -133,26 +133,28 @@
 
                                <div class="flex flex-wrap items-center justify-center gap-2">
 
-                                   <button
+                                   <a href="{{ route("guru.show",$guru->id) }}"
                                        class="rounded-xl border border-stone-300 px-4 py-2 text-xs font-medium text-stone-700 transition hover:bg-stone-100">
 
                                        Detail
 
-                                   </button>
+                                   </a>
 
-                                   <a href="{{ route("guru.edit",$guru->id) }}"
+                                   <a href="{{ route('guru.edit', $guru->id) }}"
                                        class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-medium text-blue-700 transition hover:bg-blue-100">
 
                                        Edit
 
                                    </a>
 
-                                   <button
+                                   <button wire:click="confirmDelete({{ $guru->id }})"
                                        class="rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-xs font-medium text-red-700 transition hover:bg-red-100">
 
                                        Hapus
 
                                    </button>
+                                   <x-partials.modal-hapus id="{{ $guru->id }}" />
+
 
                                    <button
                                        class="rounded-xl border border-green-200 bg-green-50 px-4 py-2 text-xs font-medium text-green-700 transition hover:bg-green-100">
@@ -166,11 +168,24 @@
                            </td>
 
                        </tr>
-                   @endforeach
-                   <!-- Item -->
 
+                    @empty
+                       <tr>
+                           <td colspan="6" class="px-6 py-12">
+                               <div class="flex flex-col items-center justify-center">
+                                   <svg class="mb-4 size-16 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m0 0h6M6 12a6 6 0 11-12 0 6 6 0 0112 0z" />
+                                   </svg>
+                                   <h3 class="text-lg font-semibold text-stone-700">Belum Ada Data Guru</h3>
+                                   <p class="mt-2 text-sm text-stone-500">Tidak ada guru yang terdaftar saat ini. Silakan tambahkan guru baru.</p>
+                               </div>
+                           </td>
+                       </tr>
+                       
+                   @endforelse
 
-
+                 
+                   
                </tbody>
 
            </table>

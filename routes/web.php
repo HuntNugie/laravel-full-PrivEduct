@@ -44,6 +44,8 @@ Route::middleware([
             Route::get("/edit/{guru}",[GuruController::class,"edit"])->name("guru.edit");
             // jang aksi update guru
             Route::put("/edit/{guru}",[GuruController::class,"update"])->name("guru.update");
+            // jang aksi nampilkeun detail guru
+            Route::get("/detail/{guru}",[GuruController::class,"show"])->name("guru.show");
         });
     });
 

@@ -45,6 +45,10 @@ class GuruController extends Controller
         return redirect()->route("guru");
     }
 
+    public function show(Guru $guru){
+        return view("page.admin.detail-guru-admin",["guru" => $guru]);
+    }
+
 
     // ini untuk di halaman register guru yang bisa di akses semua orang
     public function registerForm()
