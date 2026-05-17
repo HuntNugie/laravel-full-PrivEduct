@@ -18,13 +18,13 @@ class GuruController extends Controller
         return view("page.isLogin.daftar-guru-admin");
     }
 
-    public function create(){
+    public function registerForm(){
         $mapel = MataPelajaran::all();
 
         return view("auth.register-guru",["mapel"=>$mapel]);
     }
 
-    public function store(GuruRequest $request){
+    public function registerStore(GuruRequest $request){
         $user = $this->service->register($request->validated(),$request->file("cv"));
         Auth::login($user);
         return redirect()->route("dashboard");

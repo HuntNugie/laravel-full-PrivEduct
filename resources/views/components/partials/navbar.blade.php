@@ -7,8 +7,8 @@
                 <!-- LOGO -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
 
-                    <div class="w-12 h-12 rounded-2xl bg-orange-500 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-orange-200">
-                        P
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center">
+                        <img src="logo.jpeg" alt="Logo" class="w-10 h-10 object-contain">
                     </div>
 
                     <div>

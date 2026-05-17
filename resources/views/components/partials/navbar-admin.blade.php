@@ -5,6 +5,7 @@
    <x-nav-link href="{{ route('guru') }}" :active="request()->routeIs('guru')">
        Daftar Guru
    </x-nav-link>
+   
 
    <x-nav-link href="#">
        Daftar Siswa

@@ -19,7 +19,7 @@
 
         <x-validation-errors class="mb-5" />
 
-        <form method="POST" action="{{ route("guru.store") }}" class="space-y-6" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("guru.registerStore") }}" class="space-y-6" enctype="multipart/form-data">
             @csrf
 
             {{-- NAME --}}

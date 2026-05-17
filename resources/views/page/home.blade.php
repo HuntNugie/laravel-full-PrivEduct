@@ -112,12 +112,14 @@
 
                                 <div class="flex items-center gap-5">
 
-                                    <div class="w-16 h-16 rounded-3xl bg-sky-100"></div>
+                                    <div class="w-16 h-16 rounded-3xl overflow-hidden">
+                                        <img src="{{ asset('logo.jpeg') }}" alt="PrivEduct" class="w-full h-full object-cover">
+                                    </div>
 
                                     <div>
 
                                         <h3 class="text-lg font-black text-slate-900">
-                                            Kelas Private Matematika
+                                            Kelas Private 
                                         </h3>
 
                                         <p class="mt-1 text-sm text-slate-500">
@@ -129,7 +131,7 @@
                                 </div>
 
                                 <div class="px-4 py-2 rounded-2xl bg-orange-50 text-orange-600 text-sm font-bold">
-                                    Aktif
+                                    Terpercaya
                                 </div>
 
                             </div>

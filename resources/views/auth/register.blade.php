@@ -103,7 +103,7 @@
                 </a>
             </div>
             <div class="text-center">
-                <a href="{{ route('guru.create') }}" class="text-sm text-stone-500 transition hover:text-stone-800">
+                <a href="{{ route('guru.register') }}" class="text-sm text-stone-500 transition hover:text-stone-800">
                     Mau mendaftar sebagai guru ?
                 </a>
             </div>
