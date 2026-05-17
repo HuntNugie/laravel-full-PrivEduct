@@ -49,5 +49,10 @@ Route::middleware([
         });
     });
 
+    // ini hal hal yang hanya bisa di lakukan guru yang sudah di approved
+    Route::middleware("approveGuru")->group(function () {
+        // tambahkan route yang hanya bisa di akses guru yang sudah di approve disini
+    });
+
 
 });

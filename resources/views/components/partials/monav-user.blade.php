@@ -8,19 +8,18 @@
 
           </x-responsive-nav-link>
 
-        @if(auth()->user()->guru->isApproved())
-          <x-responsive-nav-link href="#" disabled="{{ true }}">
-              My Classes
+          <x-responsive-nav-link href="{{ route('guru') }}" :active="request()->routeIs('guru')">
+              Daftar Guru
+          </x-responsive-nav-link>
+
+
+          <x-responsive-nav-link href="#">
+              Daftar Siswa
           </x-responsive-nav-link>
 
           <x-responsive-nav-link href="#">
-              Schedule
+              Daftar Booking
           </x-responsive-nav-link>
-
-          <x-responsive-nav-link href="#">
-              Tutors
-          </x-responsive-nav-link>
-        @endif
 
       </div>
 

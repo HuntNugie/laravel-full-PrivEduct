@@ -172,6 +172,9 @@
     <!-- Mobile Navigation -->
     @if (auth()->user()->isAdmin())
         <x-partials.monav-admin />
+
+    @elseif (auth()->user()->isGuru())
+        <x-partials.monav-guru />
     @endif
 
 </nav>'
