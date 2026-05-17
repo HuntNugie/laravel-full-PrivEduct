@@ -15,7 +15,7 @@ class GuruController extends Controller
     }
 
     public function index(){
-        return view("page.isLogin.daftar-guru-admin");
+        return view("page.admin.daftar-guru-admin");
     }
 
     public function registerForm(){
