@@ -156,12 +156,7 @@
                                    <x-partials.modal-hapus id="{{ $guru->id }}" />
 
 
-                                   <button
-                                       class="rounded-xl border border-green-200 bg-green-50 px-4 py-2 text-xs font-medium text-green-700 transition hover:bg-green-100">
-
-                                       Aktifkan
-
-                                   </button>
+                               
 
                                </div>
 

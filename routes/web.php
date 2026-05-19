@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('page.home');
 })->name('home');
+
+
 // jang nampilkeun halaman daftar guru jeung user
 Route::get("daftar-guru", function () {
     return view('page.daftar-guru');

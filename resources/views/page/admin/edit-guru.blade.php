@@ -131,6 +131,7 @@
                         <option value="S1" {{ $guru->lulusan == 'S1' ? 'selected' : '' }}>S1</option>
                         <option value="S2" {{ $guru->lulusan == 'S2' ? 'selected' : '' }}>S2</option>
                         <option value="S3" {{ $guru->lulusan == 'S3' ? 'selected' : '' }}>S3</option>
+                        <option value="S4" {{ $guru->lulusan == 'S4' ? 'selected' : '' }}>S4</option>
 
                     </select>
 

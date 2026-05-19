@@ -15,8 +15,8 @@
               Tutup
           </x-secondary-button>
 
-          <x-button class="ml-2" wire:click="deleteGuru({{ $id }})">
-              Simpan
+          <x-button class="ml-2 bg-red-500" wire:click="deleteGuru({{ $id }})">
+              Hapus
           </x-button>
       </x-slot>
   </x-dialog-modal>

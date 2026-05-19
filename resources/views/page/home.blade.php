@@ -501,7 +501,9 @@
 
             <div class="grid lg:grid-cols-2 gap-20 items-center">
 
-                <div class="h-[500px] rounded-[40px] bg-gradient-to-br from-sky-100 to-orange-100"></div>
+                <div class="h-[500px] rounded-[40px] bg-gradient-to-br from-sky-100 to-orange-100">
+                    <img src="logo.jpeg" alt="">
+                </div>
 
                 <div>
 
