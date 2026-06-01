@@ -1,6 +1,6 @@
  <!-- GRID -->
- @forelse ($gurus as $guru)
-     <div class="mt-20 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+ <div class="mt-20 grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+         @forelse ($gurus as $guru)
 
          <!-- CARD -->
          <div
@@ -9,7 +9,7 @@
              <!-- IMAGE -->
              <div class="h-80 bg-gradient-to-br from-sky-100 to-orange-100 relative">
 
-                <img src="{{ $guru->User->profile_photo_url }}" alt="">
+                <img src="{{ $guru->User->profile_photo_url }}" alt="" class="w-full h-full object-cover">
                  <div
                      class="absolute top-6 right-6 px-4 py-2 rounded-2xl bg-white text-orange-500 text-sm font-bold shadow-lg">
 
@@ -99,7 +99,7 @@
          <!-- DUPLICATE CARD -->
          <!-- nanti tinggal looping -->
 
-     </div>
-     @empty
-
- @endforelse
+         @empty
+         
+         @endforelse
+        </div>

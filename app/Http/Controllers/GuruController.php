@@ -64,4 +64,20 @@ class GuruController extends Controller
         Auth::login($user);
         return redirect()->route("dashboard");
     }
+
+    public function approveHandler(Guru $guru){
+        $guru->update([
+            "status" => "approved"
+        ]);
+
+        return redirect()->route("guru");
+    }
+
+    public function rejectHandler(Guru $guru){
+        $guru->update([
+            "status" => "rejected"
+        ]);
+
+        return redirect()->route("guru");
+    }
 }

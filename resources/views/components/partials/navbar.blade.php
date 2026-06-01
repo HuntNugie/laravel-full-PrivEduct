@@ -58,7 +58,7 @@
                 <!-- BUTTON -->
                 @auth
                     <div class="relative group">
-                        <button type="button" class="flex items-center gap-3 px5 py-3 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold shadow-xl shadow-orange-200 transition">
+                        <button type="button" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold shadow-xl shadow-orange-200 transition">
                             <img src="{{ Auth::user()->profile_photo_url ?? 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->name).'&background=F97316&color=ffffff' }}" alt="{{ Auth::user()->name }}" class="w-9 h-9 rounded-full object-cover border border-white shadow-sm">
                             <span>{{ Auth::user()->name }}</span>
                         </button>
