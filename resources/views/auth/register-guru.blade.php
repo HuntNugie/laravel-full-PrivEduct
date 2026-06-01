@@ -49,6 +49,14 @@
                     type="tel" name="no_hp" :value="old('no_hp')" required autocomplete="tel"
                     placeholder="08123456789" />
             </div>
+            <div>
+                <x-label for="tgl_lahir" value="Tanggal Lahir" class="text-sm font-medium text-stone-700" />
+
+                <x-input id="tgl_lahir"
+                    class="mt-2 block w-full rounded-xl border-stone-300 bg-stone-50 text-black focus:border-stone-500 focus:ring-stone-500"
+                    type="date" name="tgl_lahir" :value="old('tgl_lahir')" required />
+            </div>
+            
 
             {{-- GENDER --}}
             <div>

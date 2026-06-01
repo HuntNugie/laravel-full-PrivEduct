@@ -25,6 +25,7 @@ class GuruEditAdminRequest extends FormRequest
         return [
             "name" => ['required', 'string', 'max:255'],
             "no_hp" => ['required'],
+            "tgl_lahir" => ['required', 'date'],
             "mata_pelajarans" => ['required', 'array'],
             "mata_pelajarans.*" => ['exists:mata_pelajarans,id'],
             "jk" => ['required', "in:Laki-laki,Perempuan"],

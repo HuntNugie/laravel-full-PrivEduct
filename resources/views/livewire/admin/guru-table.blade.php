@@ -24,10 +24,31 @@
 
            </div>
 
+
        </div>
 
        <!-- Table -->
        <div class="overflow-x-auto">
+           <div class="m-5">
+               <button wire:click="allGuruData"
+                   class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-700">
+
+                   Semua data
+
+               </button>
+               <button wire:click="activeGuruData"
+                   class="inline-flex items-center justify-center rounded-2xl bg-green-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-green-700">
+
+                   Daftar Aktif Guru
+
+               </button>
+               <button wire:click="pendingGuruData"
+                   class="inline-flex items-center justify-center rounded-2xl bg-yellow-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-yellow-700">
+
+                   Daftar Pengajuan Guru
+
+               </button>
+           </div>
 
            <table class="min-w-full divide-y divide-stone-200">
 
@@ -133,7 +154,7 @@
 
                                <div class="flex flex-wrap items-center justify-center gap-2">
 
-                                   <a href="{{ route("guru.show",$guru->id) }}"
+                                   <a href="{{ route('guru.show', $guru->id) }}"
                                        class="rounded-xl border border-stone-300 px-4 py-2 text-xs font-medium text-stone-700 transition hover:bg-stone-100">
 
                                        Detail
@@ -156,7 +177,7 @@
                                    <x-partials.modal-hapus id="{{ $guru->id }}" />
 
 
-                               
+
 
                                </div>
 
@@ -164,23 +185,25 @@
 
                        </tr>
 
-                    @empty
+                   @empty
                        <tr>
                            <td colspan="6" class="px-6 py-12">
                                <div class="flex flex-col items-center justify-center">
-                                   <svg class="mb-4 size-16 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m0 0h6M6 12a6 6 0 11-12 0 6 6 0 0112 0z" />
+                                   <svg class="mb-4 size-16 text-stone-300" fill="none" stroke="currentColor"
+                                       viewBox="0 0 24 24">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                           d="M12 6v6m0 0v6m0-6h6m0 0h6M6 12a6 6 0 11-12 0 6 6 0 0112 0z" />
                                    </svg>
                                    <h3 class="text-lg font-semibold text-stone-700">Belum Ada Data Guru</h3>
-                                   <p class="mt-2 text-sm text-stone-500">Tidak ada guru yang terdaftar saat ini. Silakan tambahkan guru baru.</p>
+                                   <p class="mt-2 text-sm text-stone-500">Tidak ada guru yang terdaftar saat ini.
+                                       Silakan tambahkan guru baru.</p>
                                </div>
                            </td>
                        </tr>
-                       
                    @endforelse
 
-                 
-                   
+
+
                </tbody>
 
            </table>

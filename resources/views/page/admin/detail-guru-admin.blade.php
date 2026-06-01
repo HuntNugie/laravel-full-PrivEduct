@@ -60,8 +60,12 @@
                     </div>
                     
                     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                        <h3 class="text-sm uppercase tracking-[0.2em] text-slate-500">Tanggal Masuk</h3>
+                        <h3 class="text-sm uppercase tracking-[0.2em] text-slate-500">Tanggal akun di buat</h3>
                         <p class="mt-2 text-lg font-medium text-slate-900">{{ $guru->created_at->format('d M Y') }}</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                        <h3 class="text-sm uppercase tracking-[0.2em] text-slate-500">Tanggal lahir</h3>
+                        <p class="mt-2 text-lg font-medium text-slate-900">{{ $guru->tgl_lahir }}</p>
                     </div>
                     <div class="sm:col-span-2 rounded-2xl border border-slate-200 bg-slate-50 p-4">
                         <h3 class="text-sm uppercase tracking-[0.2em] text-slate-500">Status</h3>

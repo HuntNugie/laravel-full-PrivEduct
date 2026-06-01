@@ -10,6 +10,7 @@ class GuruTable extends Component
 {
     public $show = false;
     public $guruId = null;
+    private $gurus = "all";
 
     public function confirmDelete($id)
     {
@@ -29,9 +30,23 @@ class GuruTable extends Component
         $this->show = false;
 
     }
+    public function activeGuruData(){
+        $this->gurus = "active";
+    }
+    public function allGuruData(){
+        $this->gurus = "all";
+    }
+    public function pendingGuruData(){
+        $this->gurus = "pending";
+    }
     public function render()
     {
-        $gurus = Guru::with("User")->get();
-        return view('livewire.admin.guru-table', ["gurus" => $gurus]);
+        $query = Guru::with("User");
+        if ($this->gurus === "active") {
+            $query = $query->where("status", "approved");
+        }else if($this->gurus === "pending"){
+            $query = $query->where("status", "pending");
+        }
+        return view('livewire.admin.guru-table', ["gurus" => $query->get()]);
     }
 }

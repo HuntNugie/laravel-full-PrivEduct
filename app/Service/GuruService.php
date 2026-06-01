@@ -22,6 +22,7 @@ class GuruService
         $guru = $user->guru()->create([
             "no_hp" => $input["no_hp"],
             "jenis_kelamin" => $input["jk"],
+            "tgl_lahir" => $input["tgl_lahir"],
             "alamat" => $input["alamat"],
             "lulusan" => $input["lulusan"],
             "status" => "approved"
@@ -40,6 +41,7 @@ class GuruService
         $guru->update([
             "no_hp" => $input["no_hp"],
             "jenis_kelamin" => $input["jk"],
+            "tgl_lahir" => $input["tgl_lahir"],
             "alamat" => $input["alamat"],
             "lulusan" => $input["lulusan"],
         ]);
@@ -69,6 +71,7 @@ class GuruService
             "no_hp" => $input["no_hp"],
             "jenis_kelamin" => $input["jk"],
             "alamat" => $input["alamat"],
+            "tgl_lahir" => $input["tgl_lahir"],
             "lulusan" => $input["lulusan"],
             "cv" => $input["cv"]
         ]);

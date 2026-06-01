@@ -28,6 +28,7 @@ class GuruRequest extends FormRequest
             "name" => ['required', 'string', 'max:255'],
             "email" => ['required', 'string', 'email:dns', 'max:255', 'unique:users'],
             "password" => ['required', 'string', Password::default(), 'confirmed'],
+            "tgl_lahir" => ['required', 'date'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
             "no_hp" => ['required'],
             "mata_pelajarans" => ['required', 'array'],

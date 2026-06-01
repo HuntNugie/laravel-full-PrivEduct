@@ -28,6 +28,7 @@ class GuruAdminRequest extends FormRequest
             "email" => ['required', 'string', 'email:dns', 'max:255', 'unique:users'],
             "password" => ['required', 'string', Password::default(), 'confirmed'],
             "no_hp" => ['required'],
+            "tgl_lahir" => ['required', 'date'],
             "mata_pelajarans" => ['required', 'array'],
             "mata_pelajarans.*" => ['exists:mata_pelajarans,id'],
             "jk" => ['required', "in:Laki-laki,Perempuan"],
