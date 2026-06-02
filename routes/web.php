@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\PostingController;
 use Illuminate\Support\Facades\Route;
 
 // jang nampilkeun halaman utama
@@ -43,21 +44,25 @@ Route::middleware([
             // jang aksi nambihkeun guru
             Route::post("/", [GuruController::class, "store"])->name("guru.store");
             // jang nampilkeun form edit
-            Route::get("/edit/{guru}",[GuruController::class,"edit"])->name("guru.edit");
+            Route::get("/edit/{guru}", [GuruController::class, "edit"])->name("guru.edit");
             // jang aksi update guru
-            Route::put("/edit/{guru}",[GuruController::class,"update"])->name("guru.update");
+            Route::put("/edit/{guru}", [GuruController::class, "update"])->name("guru.update");
             // jang aksi nampilkeun detail guru
-            Route::get("/detail/{guru}",[GuruController::class,"show"])->name("guru.show");
+            Route::get("/detail/{guru}", [GuruController::class, "show"])->name("guru.show");
             // aksi untuk menerima guru
-            Route::post("/approve/{guru}",[GuruController::class,"approveHandler"])->name("guru.approve");
+            Route::post("/approve/{guru}", [GuruController::class, "approveHandler"])->name("guru.approve");
             // aksi untuk menolak guru
-            Route::post("/reject/{guru}",[GuruController::class,"rejectHandler"])->name("guru.reject");
+            Route::post("/reject/{guru}", [GuruController::class, "rejectHandler"])->name("guru.reject");
         });
     });
 
     // ini hal hal yang hanya bisa di lakukan guru yang sudah di approved
     Route::middleware("approveGuru")->group(function () {
         // tambahkan route yang hanya bisa di akses guru yang sudah di approve disini
+        Route::prefix("posting")->group(function () {
+            Route::get("/", [PostingController::class, "index"])->name("posting");
+            Route::get("/create", [PostingController::class, "create"])->name("posting.create");
+        });
     });
 
 

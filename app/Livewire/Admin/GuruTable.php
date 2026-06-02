@@ -39,6 +39,9 @@ class GuruTable extends Component
     public function pendingGuruData(){
         $this->gurus = "pending";
     }
+    public function rejectedGuruData(){
+        $this->gurus = "rejected";
+    }
     public function render()
     {
         $query = Guru::with("User");
@@ -46,6 +49,8 @@ class GuruTable extends Component
             $query = $query->where("status", "approved");
         }else if($this->gurus === "pending"){
             $query = $query->where("status", "pending");
+        }else if($this->gurus === "rejected"){
+            $query = $query->where("status", "rejected");
         }
         return view('livewire.admin.guru-table', ["gurus" => $query->get()]);
     }

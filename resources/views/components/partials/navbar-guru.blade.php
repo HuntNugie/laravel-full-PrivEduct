@@ -3,8 +3,8 @@
    </x-nav-link>
 
    @if (auth()->user()->guru->isApproved())
-       <x-nav-link href="#" disabled="{{ true }}">
-           My Classes
+       <x-nav-link href="{{ route('posting') }}" disabled="{{ true }}" :active="request()->routeIs('posting')">
+           Posting
        </x-nav-link>
 
        <x-nav-link href="#">

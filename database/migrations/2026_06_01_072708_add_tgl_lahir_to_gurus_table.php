@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('gurus', function (Blueprint $table) {
-            $table->date("tgl_lahir")->nullable()->after("alamat");
+            $table->date("tgl_lahir")->nullable()->after("alamat"); 
         });
     }
 

@@ -48,6 +48,12 @@
                    Daftar Pengajuan Guru
 
                </button>
+               <button wire:click="rejectedGuruData"
+                   class="inline-flex items-center justify-center rounded-2xl bg-red-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-red-700">
+
+                   Daftar Guru di tolak
+
+               </button>
            </div>
 
            <table class="min-w-full divide-y divide-stone-200">

@@ -17,7 +17,7 @@ class isApproveGuru
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(Auth::user()->guru->status !== "approved"){
+        if(!Auth::user()->guru || Auth::user()->guru->status !== "approved"){
             abort(403, "Akun guru anda belum di approve oleh admin");
         }
         return $next($request);
