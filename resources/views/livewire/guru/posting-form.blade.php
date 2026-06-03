@@ -7,7 +7,7 @@
         <div>
 
             <label class="block text-sm font-medium text-stone-700">
-                Foto_cover
+                Foto cover
             </label>
 
             @if ($foto_cover)

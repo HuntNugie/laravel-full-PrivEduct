@@ -71,7 +71,7 @@
                     </p>
 
                     <h4 class="mt-1 text-3xl font-semibold text-stone-800">
-                        Rp {{ $posting[0]->tarif }} / Sesi
+                        Rp {{ number_format($posting[0]->tarif, 0, ',', '.') }} / Sesi
                     </h4>
 
                 </div>
