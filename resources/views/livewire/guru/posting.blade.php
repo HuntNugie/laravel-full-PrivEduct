@@ -22,7 +22,7 @@
 
         </div>
 
-        <livewire:guru.posting-status />
+        <livewire:guru.posting-status :posting="$posting" />
 
         <!-- Form -->
         <div class="mt-8 rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
@@ -39,9 +39,9 @@
 
             </div>
 
-            <livewire:guru.posting-preview />
+        <livewire:guru.posting-preview :posting="$posting" />
             {{-- nanti diganti livewire --}}
-            <livewire:guru.posting-form />
+            <livewire:guru.posting-form :posting="$posting" />
         </div>
 
     </div>

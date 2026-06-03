@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class GuruService
 {
+
+    public function __construct(private FileUploadService $uploadFile)
+    {
+    }
     public function addGuru(array $input): User
     {
         // tambahkan dulu ke user
@@ -63,7 +67,7 @@ class GuruService
 
         // upload file
         if ($file) {
-            $cv = $file->store("cv_guru", "public");
+            $cv = $this->uploadFile->upload($file,"cv_guru");
             $input["cv"] = $cv;
         }
         // setelah itu tambahkan yang relasi nya 

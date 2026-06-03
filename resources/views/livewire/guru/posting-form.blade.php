@@ -1,8 +1,27 @@
 <div>
-  
+
 
     <form wire:submit="save" class="space-y-8">
 
+        <!-- Caption -->
+        <div>
+
+            <label class="block text-sm font-medium text-stone-700">
+                Foto_cover
+            </label>
+
+            @if ($foto_cover)
+                <img src="{{ $foto_cover->temporaryUrl() }}" class="mt-3 h-48 w-48 rounded-xl object-cover border border-stone-200">
+            @endif
+
+            <input type="file" rows="6" wire:model="foto_cover"
+                class="mt-2 w-full rounded-2xl border-stone-300 bg-stone-50 focus:border-stone-500 focus:ring-stone-500" />
+
+            @error('caption')
+                <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+            @enderror
+
+        </div>
         <!-- Caption -->
         <div>
 
@@ -24,7 +43,7 @@
         <div>
 
             <label class="block text-sm font-medium text-stone-700">
-                Tarif Mengajar per Jam
+                Tarif Mengajar per Sesi
             </label>
 
             <input type="number" wire:model="tarif"
@@ -48,8 +67,7 @@
 
                 <label class="flex items-center gap-3">
 
-                    <input type="checkbox" value="online" wire:model="modeBelajar">
-
+                    <input type="checkbox" value="online" wire:model="metode_belajar">
                     <span>
                         Online
                     </span>
@@ -58,7 +76,7 @@
 
                 <label class="flex items-center gap-3">
 
-                    <input type="checkbox" value="offline" wire:model="modeBelajar">
+                    <input type="checkbox" value="offline" wire:model="metode_belajar">
 
                     <span>
                         Offline

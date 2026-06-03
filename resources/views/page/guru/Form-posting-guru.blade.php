@@ -20,12 +20,13 @@
         </div>
 
         <form
-            action=""
+            action="{{ route("posting.store") }}"
             method="POST"
             enctype="multipart/form-data"
             class="mt-10 space-y-8">
 
             @csrf
+
 
             <!-- Cover -->
             <div class="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
@@ -37,7 +38,7 @@
 
                 <input
                     type="file"
-                    name="cover"
+                    name="foto_cover"
                     id="cover"
                     accept="image/*"
                     class="mt-3 block w-full text-sm text-stone-600">
@@ -92,7 +93,7 @@
 
                         <input
                             type="checkbox"
-                            name="mode_belajar[]"
+                            name="metode_belajar[]"
                             value="online">
 
                         <span class="text-stone-700">
@@ -105,7 +106,7 @@
 
                         <input
                             type="checkbox"
-                            name="mode_belajar[]"
+                            name="metode_belajar[]"
                             value="offline">
 
                         <span class="text-stone-700">
@@ -135,66 +136,8 @@
 
             </div>
 
-            <!-- Sertifikat -->
-            <div class="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
+       
 
-                <x-label
-                    for="sertifikat"
-                    value="Upload Sertifikat"
-                    class="text-sm font-medium text-stone-700" />
-
-                <input
-                    type="file"
-                    name="sertifikat[]"
-                    id="sertifikat"
-                    multiple
-                    class="mt-3 block w-full">
-
-                <p class="mt-2 text-xs text-stone-500">
-                    Bisa upload lebih dari satu sertifikat.
-                </p>
-
-            </div>
-
-            <!-- Status -->
-            <div class="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
-
-                <x-label
-                    value="Status Posting"
-                    class="text-sm font-medium text-stone-700" />
-
-                <div class="mt-4 flex gap-8">
-
-                    <label class="flex items-center gap-2">
-
-                        <input
-                            type="radio"
-                            name="status_publish"
-                            value="published">
-
-                        <span class="text-stone-700">
-                            Terposting
-                        </span>
-
-                    </label>
-
-                    <label class="flex items-center gap-2">
-
-                        <input
-                            type="radio"
-                            name="status_publish"
-                            value="unpublished"
-                            checked>
-
-                        <span class="text-stone-700">
-                            Tidak Terposting
-                        </span>
-
-                    </label>
-
-                </div>
-
-            </div>
 
             <!-- Submit -->
             <div class="flex justify-end">

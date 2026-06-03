@@ -62,6 +62,7 @@ Route::middleware([
         Route::prefix("posting")->group(function () {
             Route::get("/", [PostingController::class, "index"])->name("posting");
             Route::get("/create", [PostingController::class, "create"])->name("posting.create");
+            Route::post("/",[PostingController::class,"store"])->name("posting.store");
         });
     });
 

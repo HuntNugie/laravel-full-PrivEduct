@@ -22,7 +22,7 @@
             <!-- Foto -->
             <div class="lg:w-1/3">
 
-                <img src="{{ Auth::user()->profile_photo_url }}"
+                <img src="{{ asset('storage/'.$posting[0]->foto_cover) }}"
                     class="h-80 w-full rounded-3xl border border-stone-200 object-cover">
 
             </div>
@@ -35,29 +35,31 @@
                 </h3>
 
                 <p class="mt-2 text-orange-500 font-medium">
-                    Matematika, Fisika, Bahasa Inggris
+                    {{ Auth::user()->guru->MataPelajarans()->pluck("nama_mapel")->join(" , ") }}
                 </p>
 
                 <p class="mt-6 leading-relaxed text-stone-600">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Explicabo molestias laboriosam modi voluptates,
-                    doloremque officia consectetur illo quisquam.
+                    {{ $posting[0]->caption }}
                 </p>
 
                 <!-- Mode -->
                 <div class="mt-6 flex flex-wrap gap-3">
 
+                   @foreach ($posting[0]->metode_belajar as $jar )
+                    @if($jar === "online")
                     <span class="rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700">
 
                         Online
 
                     </span>
-
+                    @elseif($jar === "offline")
                     <span class="rounded-full bg-sky-100 px-4 py-2 text-sm font-medium text-sky-700">
 
                         Offline
 
                     </span>
+                    @endif
+                   @endforeach
 
                 </div>
 
@@ -69,7 +71,7 @@
                     </p>
 
                     <h4 class="mt-1 text-3xl font-semibold text-stone-800">
-                        Rp 150.000 / Jam
+                        Rp {{ $posting[0]->tarif }} / Sesi
                     </h4>
 
                 </div>

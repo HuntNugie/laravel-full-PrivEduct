@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class PostingStatus extends Component
 {
+    public $posting;
     public function render()
     {
         return view('livewire.guru.posting-status');
