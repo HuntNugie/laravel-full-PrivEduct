@@ -287,7 +287,7 @@
 
                 <button
                     class="w-fit px-7 py-4 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-xl shadow-orange-200 transition">
-                    <a href="{{ route('daftar-guru') }}">
+                    <a href="{{ route('guru.user.index') }}">
                         Lihat Semua Guru
                     </a>
                 </button>

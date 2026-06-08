@@ -9,13 +9,10 @@ Route::get('/', function () {
     return view('page.home');
 })->name('home');
 
-
-// jang nampilkeun halaman daftar guru jeung user
-Route::get("daftar-guru", function () {
-    return view('page.daftar-guru');
-})->name('daftar-guru');
-
-
+Route::prefix("guru")->group(function () {
+    Route::get("/", [GuruController::class, "indexUser"])->name("guru.user.index");
+    Route::get("/{guru}", [GuruController::class, "showUser"])->name("guru.user.show")->middleware("isAuthUser");
+});
 // untuk register guru
 Route::get("/register/guru", [GuruController::class, "registerForm"])->name("guru.register");
 // jang aksi nambihkeun guru
@@ -36,23 +33,13 @@ Route::middleware([
 
     // hal hal yang bisa di lakukan admin
     Route::middleware("admin")->group(function () {
-        Route::prefix("guru")->group(function () {
-            // jang nampilkeun daftar guru admin
-            Route::get("/", [GuruController::class, "index"])->name("guru");
-            // jang nampilkeun form register
-            Route::get("/add", [GuruController::class, "create"])->name("guru.create");
-            // jang aksi nambihkeun guru
-            Route::post("/", [GuruController::class, "store"])->name("guru.store");
-            // jang nampilkeun form edit
-            Route::get("/edit/{guru}", [GuruController::class, "edit"])->name("guru.edit");
-            // jang aksi update guru
-            Route::put("/edit/{guru}", [GuruController::class, "update"])->name("guru.update");
-            // jang aksi nampilkeun detail guru
-            Route::get("/detail/{guru}", [GuruController::class, "show"])->name("guru.show");
-            // aksi untuk menerima guru
-            Route::post("/approve/{guru}", [GuruController::class, "approveHandler"])->name("guru.approve");
-            // aksi untuk menolak guru
-            Route::post("/reject/{guru}", [GuruController::class, "rejectHandler"])->name("guru.reject");
+        Route::prefix("admin")->group(function () {
+            Route::get("/guru", [GuruController::class, "index"])->name("guru");
+            Route::get("/guru/create", [GuruController::class, "create"])->name("guru.create");
+            Route::post("/guru", [GuruController::class, "store"])->name("guru.store");
+            Route::get("/guru/{guru}/edit", [GuruController::class, "edit"])->name("guru.edit");
+            Route::put("/guru/{guru}", [GuruController::class, "update"])->name("guru.update");
+            Route::get("/guru/{guru}", [GuruController::class, "show"])->name("guru.show");
         });
     });
 
@@ -66,5 +53,5 @@ Route::middleware([
         });
     });
 
-
+    // ini untuk user 
 });

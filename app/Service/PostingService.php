@@ -22,4 +22,9 @@ class PostingService
         $create = Auth::user()->guru->posting()->create($input);
         return $create;
     }
+
+    public function getPostinganPublished()
+    {
+        return Posting::with("guru.user")->where("status_publish","published")->get();
+    }
 }

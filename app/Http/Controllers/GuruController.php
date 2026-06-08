@@ -21,6 +21,11 @@ class GuruController extends Controller
     {
         return view("page.admin.daftar-guru-admin");
     }
+    public function indexUser()
+    {
+        return view('page.daftar-guru');
+
+    }
 
     public function create()
     {
@@ -34,21 +39,28 @@ class GuruController extends Controller
         return redirect()->route("guru");
     }
 
-    public function edit(Guru $guru){
+    public function edit(Guru $guru)
+    {
         $selected_mapel = $guru->MataPelajarans->pluck("id")->toArray();
         $mapel = MataPelajaran::all();
-        return view("page.admin.edit-guru",["guru" => $guru,"mapel" => $mapel, "selected_mapel" => $selected_mapel]);
+        return view("page.admin.edit-guru", ["guru" => $guru, "mapel" => $mapel, "selected_mapel" => $selected_mapel]);
     }
 
-    public function update(Guru $guru, GuruEditAdminRequest $request){
-        $this->service->updateGuru($request->validated(),$guru);
+    public function update(Guru $guru, GuruEditAdminRequest $request)
+    {
+        $this->service->updateGuru($request->validated(), $guru);
         return redirect()->route("guru");
     }
 
-    public function show(Guru $guru){
-        return view("page.admin.detail-guru-admin",["guru" => $guru]);
+    public function show(Guru $guru)
+    {
+        return view("page.admin.detail-guru-admin", ["guru" => $guru]);
     }
 
+    public function showUser(Guru $guru)
+    {
+        return view("page.user.Detail-guru-user", compact("guru"));
+    }
 
     // ini untuk di halaman register guru yang bisa di akses semua orang
     public function registerForm()
@@ -65,7 +77,8 @@ class GuruController extends Controller
         return redirect()->route("dashboard");
     }
 
-    public function approveHandler(Guru $guru){
+    public function approveHandler(Guru $guru)
+    {
         $guru->update([
             "status" => "approved"
         ]);
@@ -73,7 +86,8 @@ class GuruController extends Controller
         return redirect()->route("guru");
     }
 
-    public function rejectHandler(Guru $guru){
+    public function rejectHandler(Guru $guru)
+    {
         $guru->update([
             "status" => "rejected"
         ]);

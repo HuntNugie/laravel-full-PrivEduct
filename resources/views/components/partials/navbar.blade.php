@@ -8,7 +8,7 @@
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
 
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center">
-                        <img src="logo.jpeg" alt="Logo" class="w-10 h-10 object-contain">
+                        <img src="{{ asset("logo.jpeg") }}" alt="Logo" class="w-10 h-10 object-contain">
                     </div>
 
                     <div>

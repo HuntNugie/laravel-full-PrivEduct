@@ -3,13 +3,15 @@
 namespace App\Livewire;
 
 use App\Models\Guru;
+use App\Service\PostingService;
 use Livewire\Component;
 
 class DaftarGuruHome extends Component
 {
-    public function render()
+    
+    public function render(PostingService $posting)
     {
-        $gurus = Guru::with("user")->where("status","approved")->get();
+        $gurus = $posting->getPostinganPublished();
         return view('livewire.daftar-guru-home',compact("gurus"));
     }
 }

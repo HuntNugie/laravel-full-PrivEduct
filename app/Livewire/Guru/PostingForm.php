@@ -40,16 +40,18 @@ class PostingForm extends Component
                 Storage::delete($this->posting[0]->foto_cover);
             }
             $validated["foto_cover"] = $file_upload->upload($this->foto_cover, "cover_postingan");
-        }else{
+        } else {
             $validated["foto_cover"] = $this->posting[0]->foto_cover;
         }
-        
+
 
         $this->posting[0]->update($validated);
 
         $this->dispatch("posting_updated");
 
     }
+
+  
     public function render()
     {
         return view('livewire.guru.posting-form');
