@@ -88,12 +88,14 @@
                     <!-- Action -->
                     <div class="mt-8 space-y-3">
 
-                        <button
+                       <form action="{{ route("guru.checkout", $guru->id) }}">
+                         <button 
                             class="w-full rounded-2xl bg-orange-500 px-5 py-3 text-white font-medium hover:bg-orange-600">
 
                             Booking Sekarang
 
                         </button>
+                       </form>
 
 
                     </div>

@@ -136,7 +136,7 @@
 
                          </div>
 
-                         <a href="{{ route('guru.user.show', $guru->guru->id) }}"
+                         <a href="{{ auth()->check() ? route("guru.user.show", $guru->guru->id) : route("login") }}"
                              class="px-6 py-4 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-xl shadow-orange-200 transition">
 
                              Lihat Profile

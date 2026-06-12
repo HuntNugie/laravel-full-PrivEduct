@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostingController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,10 @@ Route::get('/', function () {
 
 Route::prefix("guru")->group(function () {
     Route::get("/", [GuruController::class, "indexUser"])->name("guru.user.index");
-    Route::get("/{guru}", [GuruController::class, "showUser"])->name("guru.user.show")->middleware("isAuthUser");
+    Route::middleware("isAuthUser")->group(function () {
+        Route::get("/{guru}", [GuruController::class, "showUser"])->name("guru.user.show");
+        Route::get("/{guru}/checkout", [GuruController::class, "checkout"])->name("guru.checkout");
+    });
 });
 // untuk register guru
 Route::get("/register/guru", [GuruController::class, "registerForm"])->name("guru.register");
@@ -45,11 +49,19 @@ Route::middleware([
 
     // ini hal hal yang hanya bisa di lakukan guru yang sudah di approved
     Route::middleware("approveGuru")->group(function () {
-        // tambahkan route yang hanya bisa di akses guru yang sudah di approve disini
-        Route::prefix("posting")->group(function () {
-            Route::get("/", [PostingController::class, "index"])->name("posting");
-            Route::get("/create", [PostingController::class, "create"])->name("posting.create");
-            Route::post("/",[PostingController::class,"store"])->name("posting.store");
+        Route::prefix("auth/guru")->group(function () {
+            // tambahkan route yang hanya bisa di akses guru yang sudah di approve disini
+            Route::prefix("posting")->group(function () {
+                Route::get("/", [PostingController::class, "index"])->name("posting");
+                Route::get("/create", [PostingController::class, "create"])->name("posting.create");
+                Route::post("/", [PostingController::class, "store"])->name("posting.store");
+            });
+
+            // route untuk daftar order yang bisa di akses guru yang sudah di approve
+            Route::prefix("order")->group(function () {
+                Route::get("/", [OrderController::class, "index"])->name("order.index");
+                Route::get("/{order}", [OrderController::class, "show"])->name("order.show");
+            });
         });
     });
 

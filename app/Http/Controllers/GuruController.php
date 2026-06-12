@@ -62,6 +62,11 @@ class GuruController extends Controller
         return view("page.user.Detail-guru-user", compact("guru"));
     }
 
+    public function checkout(Guru $guru)
+    {
+        return view("page.user.Checkout-form", compact("guru"));
+    }
+
     // ini untuk di halaman register guru yang bisa di akses semua orang
     public function registerForm()
     {

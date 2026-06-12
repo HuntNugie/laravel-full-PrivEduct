@@ -7,8 +7,8 @@
            Posting
        </x-nav-link>
 
-       <x-nav-link href="#">
-           Schedule
+       <x-nav-link href="{{ route('order.index') }}"  :active="request()->routeIs('order.index')">
+           Daftar order
        </x-nav-link>
 
        <x-nav-link href="#">

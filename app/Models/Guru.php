@@ -28,4 +28,7 @@ class Guru extends Model
     public function isHasPosting(){
         return $this->posting();
     }
+    public function orders(){
+        return $this->hasMany(Order::class,"guru_id","id");
+    }
 }
