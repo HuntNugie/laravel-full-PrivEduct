@@ -13,6 +13,15 @@
                 <x-section-border />
             @endif
 
+            @if (auth()->user()->hasRole('user'))
+                @livewire('profile.update-profile-form')
+                <x-section-border />
+            @elseif(auth()->user()->hasRole('guru'))
+                <!-- Guru profile form -->
+            @elseif(auth()->user()->hasRole('admin'))
+                <!-- Admin profile form -->
+            @endif
+            
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.update-password-form')

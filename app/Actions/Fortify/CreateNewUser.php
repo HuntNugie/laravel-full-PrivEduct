@@ -36,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
 
         $user->user_profile()->create([
             "no_hp" => $input["no_hp"],
-            "jk" => $input["jk"]
+            "jenis_kelamin" => $input["jk"]
         ]);
 
         return $user;

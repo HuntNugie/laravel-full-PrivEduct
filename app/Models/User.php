@@ -68,6 +68,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
     public function user_profile()
     {
         return $this->hasOne(User_profile::class, 'user_id', 'id');
