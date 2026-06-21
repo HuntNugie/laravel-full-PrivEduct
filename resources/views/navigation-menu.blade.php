@@ -175,6 +175,9 @@
 
     @elseif (auth()->user()->isGuru())
         <x-partials.monav-guru />
+
+    @else 
+    <x-partials.monav-admin
     @endif
 
 </nav>'

@@ -24,4 +24,5 @@ class OrderService
         $orders = $guru->orders()->with("user")->get();
         return $orders;
     }
+
 }

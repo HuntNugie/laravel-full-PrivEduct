@@ -2,8 +2,8 @@
        Dashboard
    </x-nav-link>
 
-   <x-nav-link href="#">
-       My Classes
+   <x-nav-link href="{{ route('user.checkout.index') }}" :active="request()->routeIs('user.checkout.index')">
+       My Booking
    </x-nav-link>
 
    <x-nav-link href="#">

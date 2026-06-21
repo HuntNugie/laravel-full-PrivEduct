@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostingController;
+use App\Http\Controllers\TransactionsController;
+use App\Models\Transactions;
 use Illuminate\Support\Facades\Route;
 
 // jang nampilkeun halaman utama
@@ -22,6 +25,8 @@ Route::get("/register/guru", [GuruController::class, "registerForm"])->name("gur
 // jang aksi nambihkeun guru
 Route::post("/register/guru", [GuruController::class, "registerStore"])->name("guru.registerStore");
 
+
+// untuk midtrans
 
 // halaman untuk bisa di lakukan jika login
 Route::middleware([
@@ -66,4 +71,11 @@ Route::middleware([
     });
 
     // ini untuk user 
+    Route::prefix("/auth/user")->group(function () {
+        Route::prefix("/checkout")->group(function () {
+            Route::get("/", [CheckoutController::class, "index"])->name("user.checkout.index");
+            // untuk halaman payment
+            Route::get("/payment/{order}",[CheckoutController::class,"paymentShow"])->name("user.checkout.payment");
+        });
+    });
 });
