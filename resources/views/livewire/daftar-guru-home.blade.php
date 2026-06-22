@@ -101,8 +101,7 @@
                      </div>
 
                      <p class="mt-6 text-slate-600 leading-8">
-                         Berpengalaman mengajar private siswa SMP dan SMA
-                         dengan metode pembelajaran yang lebih fokus dan personal.
+                         {{$guru->caption}}
                      </p>
 
                      <!-- TAG -->
