@@ -16,7 +16,7 @@
             <div class="flex-1">
                 <h2 class="text-2xl font-semibold text-stone-900 mb-2">Status: Ditolak</h2>
                 <p class="text-stone-600 mb-4">
-                    Aplikasi Anda sudah ditolak. Jika masih ingin melanjutkan, silakan hubungi CS kami di link berikut ini.
+                    Permintaan Anda sudah ditolak. Jika masih ingin melanjutkan, silakan hubungi CS kami di link berikut ini.
                 </p>
                 <p class="text-sm text-red-600 hover:underline">
                     <a href="#">Hubungi CS kami</a>

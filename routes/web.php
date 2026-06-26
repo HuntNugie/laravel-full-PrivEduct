@@ -49,6 +49,10 @@ Route::middleware([
             Route::get("/guru/{guru}/edit", [GuruController::class, "edit"])->name("guru.edit");
             Route::put("/guru/{guru}", [GuruController::class, "update"])->name("guru.update");
             Route::get("/guru/{guru}", [GuruController::class, "show"])->name("guru.show");
+                 // aksi untuk menerima guru
+            Route::post("/approve/{guru}",[GuruController::class,"approveHandler"])->name("guru.approve");
+            // aksi untuk menolak guru
+            Route::post("/reject/{guru}",[GuruController::class,"rejectHandler"])->name("guru.reject");
         });
     });
 
