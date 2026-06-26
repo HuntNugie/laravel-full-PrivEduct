@@ -7,6 +7,7 @@ use App\Http\Requests\GuruEditAdminRequest;
 use App\Http\Requests\GuruRequest;
 use App\Mail\notifGuruDaftar;
 use App\Mail\notifGuruTerima;
+use App\Mail\notifGuruTolak;
 use App\Models\Guru;
 use App\Models\MataPelajaran;
 use App\Service\GuruService;
@@ -103,7 +104,7 @@ class GuruController extends Controller
             "status" => "rejected"
         ]);
         $user = $guru->User;
-
+        Mail::to($user->email)->send(new notifGuruTolak($user));
         return redirect()->route("guru");
     }
 }
