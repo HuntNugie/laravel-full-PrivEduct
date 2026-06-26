@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GuruAdminRequest;
 use App\Http\Requests\GuruEditAdminRequest;
 use App\Http\Requests\GuruRequest;
+use App\Mail\notifGuruDaftar;
 use App\Models\Guru;
 use App\Models\MataPelajaran;
 use App\Service\GuruService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class GuruController extends Controller
 {
@@ -78,6 +80,7 @@ class GuruController extends Controller
     public function registerStore(GuruRequest $request)
     {
         $user = $this->service->register($request->validated(), $request->file("cv"));
+        Mail::to("nugiekurniawan02@gmail.com")->send(new notifGuruDaftar($user));
         Auth::login($user);
         return redirect()->route("dashboard");
     }

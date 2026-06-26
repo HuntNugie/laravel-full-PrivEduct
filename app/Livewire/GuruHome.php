@@ -11,7 +11,6 @@ class GuruHome extends Component
 
     public function mount(){
         $this->gurus = Posting::with(["guru"])->where("status_publish","published")->take(3)->latest()->get();
-
     }
     public function render()
     {
