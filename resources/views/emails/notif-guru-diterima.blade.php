@@ -185,7 +185,7 @@
                         </div>
                         <div class="details-item">
                             <b>Spesialis</b>
-                            <span>{{ $user->guru->MataPelajarans->pluck()->join(" , ") }}</span>
+                            <span>{{ $user->guru->MataPelajarans->pluck("nama_mapel")->join(" , ") }}</span>
                         </div>
                         <div class="details-item">
                             <b>Tanggal Keputusan</b>
