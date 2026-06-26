@@ -6,6 +6,7 @@ use App\Http\Requests\GuruAdminRequest;
 use App\Http\Requests\GuruEditAdminRequest;
 use App\Http\Requests\GuruRequest;
 use App\Mail\notifGuruDaftar;
+use App\Mail\notifGuruTerima;
 use App\Models\Guru;
 use App\Models\MataPelajaran;
 use App\Service\GuruService;
@@ -80,7 +81,8 @@ class GuruController extends Controller
     public function registerStore(GuruRequest $request)
     {
         $user = $this->service->register($request->validated(), $request->file("cv"));
-        Mail::to("nugiekurniawan02@gmail.com")->send(new notifGuruDaftar($user));
+        $owner = config("mail.owner_email");
+        Mail::to($owner)->send(new notifGuruDaftar($user));
         Auth::login($user);
         return redirect()->route("dashboard");
     }
@@ -90,7 +92,8 @@ class GuruController extends Controller
         $guru->update([
             "status" => "approved"
         ]);
-
+        $user = $guru->User;
+        Mail::to($user->email)->send(new notifGuruTerima($user));
         return redirect()->route("guru");
     }
 
@@ -99,6 +102,7 @@ class GuruController extends Controller
         $guru->update([
             "status" => "rejected"
         ]);
+        $user = $guru->User;
 
         return redirect()->route("guru");
     }
