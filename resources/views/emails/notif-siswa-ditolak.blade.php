@@ -189,8 +189,8 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <a href="{{ config('app.url').'/guru' }}" class="button primary">Cari Guru Lain</a>
-                    <a href="{{ config('app.url').'/login' }}" class="button secondary">Masuk ke Akun</a>
+                    <a href="{{ config('app.url').'guru' }}" class="button primary">Cari Guru Lain</a>
+                    <a href="{{ config('app.url').'login' }}" class="button secondary">Masuk ke Akun</a>
                 </div>
 
                 <div class="note">
