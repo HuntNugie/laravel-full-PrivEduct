@@ -209,7 +209,7 @@
               
                 
                 <div class="note">
-                    <p>Catatan: Silakan segera <a href="{{ config("app.name").'/login' }}">masuk ke akun siswa</a> dan lakukan pembayaran untuk mengonfirmasi bookingan Anda.</p>
+                    <p>Catatan: Silakan segera <a href="{{ config("app.url").'login' }}">masuk ke akun siswa</a> dan lakukan pembayaran untuk mengonfirmasi bookingan Anda.</p>
                 </div>
             </div>
             <div class="email-footer">
