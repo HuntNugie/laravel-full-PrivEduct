@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Guru;
 
+use App\Mail\notifSiswaDiterima;
 use App\Models\Order;
 use App\Service\OrderService;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class DaftarOrderGuru extends Component
@@ -14,6 +16,7 @@ class DaftarOrderGuru extends Component
         $orderId->update([
             "status" => "accepted"
         ]);
+        Mail::to($orderId->user->email)->send(new notifSiswaDiterima($orderId));
     }
 
     public function rejectOrder(Order $orderId){
