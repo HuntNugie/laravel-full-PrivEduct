@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth\GoogleAuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\OrderController;
@@ -25,8 +26,11 @@ Route::get("/register/guru", [GuruController::class, "registerForm"])->name("gur
 // jang aksi nambihkeun guru
 Route::post("/register/guru", [GuruController::class, "registerStore"])->name("guru.registerStore");
 
+// untuk google oauth
+// untuk redirect ke google
+Route::get("/auth/google",[GoogleAuthController::class,'redirect'])->name("google.login");
+Route::get("/auth/google/callback",[GoogleAuthController::class,"callback"])->name("google.callback");
 
-// untuk midtrans
 
 // halaman untuk bisa di lakukan jika login
 Route::middleware([
