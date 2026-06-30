@@ -16,7 +16,7 @@ class TransactionsController extends Controller
     public function notification(Request $request)
     {
         $payload = $request->all();
-
+        
         Log::info('MIDTRANS NOTIF:');
         Log::info($payload);
         $serverKey = config('midtrans.server_key');

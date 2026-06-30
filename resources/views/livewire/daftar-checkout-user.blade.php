@@ -191,7 +191,7 @@
 
                     </button>
 
-                    @if ($checkout->status === "accepted")
+                    @if ($checkout->status === "accepted" && $checkout->status_bayar !== "paid")
                         <a href="{{ route('user.checkout.payment', $checkout->id) }}"
                             class="rounded-xl bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600">
 
