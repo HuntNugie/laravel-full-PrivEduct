@@ -22,7 +22,7 @@ class TransactionsController extends Controller
         $serverKey = config('midtrans.server_key');
         $orderId = $payload['order_id'];
         $statusCode = $payload['status_code'];
-        $grossAmount = $payload['gross_amount']; // 🔥 JANGAN DIUBAH
+        $grossAmount = $payload['gross_amount']; 
 
         $signature = hash(
             'sha512',
@@ -56,6 +56,9 @@ class TransactionsController extends Controller
                 $order->order->status_bayar = 'paid';
                 $order->status = "paid";
                 $order->order->status_belajar = "booking";
+                $order->midtrans_transaction_id = $payload["transaction_id"];
+                $order->payment_method = $payload["payment_type"];
+                $order->paid_at = $payload["transaction_time"];
                 break;
 
             case 'pending':
@@ -66,6 +69,7 @@ class TransactionsController extends Controller
             case 'expire':
                 $order->order->status_bayar = 'expired';
                 $order->status = "expired";
+                $order->expired_at = $payload["expiry_time"];
                 break;
 
             case 'cancel':
