@@ -5,10 +5,10 @@
         <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
                 <p class="text-sm font-medium text-orange-500">
-                    Filter
+                    Search Guru
                 </p>
-                <h2 class="mt-2 text-xl font-semibold text-stone-800">
-                    Atur Checkout Anda
+                <h2 class="mt-2 text-xl font-semibold text-stone-800"  >
+                    Booking 
                 </h2>
             </div>
         </div>
@@ -16,54 +16,13 @@
         <div class="mt-6 grid gap-6">
 
             <div class="grid gap-4">
-                <div>
-                    <label class="text-sm font-medium text-stone-500" for="confirmation-filter">
-                        Filter Konfirmasi Guru
-                    </label>
-
-                    <select id="confirmation-filter" name="confirmation"
-                        class="mt-3 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
-                        <option value="">Semua</option>
-                        <option value="accepted">Diterima</option>
-                        <option value="rejected">Ditolak</option>
-                        <option value="pending">Menunggu</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="text-sm font-medium text-stone-500" for="payment-filter">
-                        Filter Status Pembayaran
-                    </label>
-
-                    <select id="payment-filter" name="payment"
-                        class="mt-3 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
-                        <option value="">Semua</option>
-                        <option value="paid">Lunas</option>
-                        <option value="unpaid">Belum Bayar</option>
-                        <option value="failed">Gagal</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="text-sm font-medium text-stone-500" for="learning-filter">
-                        Filter Status Belajar
-                    </label>
-
-                    <select id="learning-filter" name="learning"
-                        class="mt-3 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100">
-                        <option value="">Semua</option>
-                        <option value="not_started">Belum Dimulai</option>
-                        <option value="in_progress">Sedang Berlangsung</option>
-                        <option value="finished">Selesai</option>
-                    </select>
-                </div>
-
+        
                 <div>
                     <label class="text-sm font-medium text-stone-500" for="teacher-search">
                         Cari Guru
                     </label>
 
-                    <input id="teacher-search" type="search" placeholder="Cari nama guru..."
+                    <input id="teacher-search" type="search" placeholder="Cari nama guru..." wire:model.live.debounce.500ms="search"
                         class="mt-3 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100" />
                 </div>
             </div>
@@ -185,13 +144,8 @@
                 <!-- Action -->
                 <div class="mt-8 flex flex-wrap gap-3">
 
-                    <button class="rounded-xl border border-stone-300 px-4 py-2 text-sm font-medium text-stone-700">
 
-                        Detail Booking
-
-                    </button>
-
-                    @if ($checkout->status === "accepted" && $checkout->status_bayar !== "paid")
+                    @if ($checkout->status === 'accepted' && $checkout->status_bayar !== 'paid')
                         <a href="{{ route('user.checkout.payment', $checkout->id) }}"
                             class="rounded-xl bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600">
 
@@ -199,7 +153,7 @@
 
                         </a>
                     @endif
-                 
+
                 </div>
 
             </div>
@@ -214,7 +168,9 @@
             </div>
         @endforelse
 
-
+        <div class="mt-6">
+            {{ $checkouts->links() }}
+        </div>
     </div>
 
 </div>

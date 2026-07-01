@@ -5,7 +5,7 @@ use App\Models\Transactions;
 
 class CheckoutService{
     public function getData(){
-        return auth()->user()->orders()->get();
+        return auth()->user()->orders();
     }
 
     public function createTransaction(array $data,Order $order){

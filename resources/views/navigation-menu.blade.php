@@ -11,7 +11,8 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
 
-                        <img src="{{ asset('logo.jpeg') }}" alt="PrivEdu" class="size-12 rounded-xl object-cover shadow-sm " />
+                        <img src="{{ asset('logo.jpeg') }}" alt="PrivEdu"
+                            class="size-12 rounded-xl object-cover shadow-sm " />
 
                         <div>
                             <p class="text-sm font-semibold text-stone-800">
@@ -172,12 +173,9 @@
     <!-- Mobile Navigation -->
     @if (auth()->user()->isAdmin())
         <x-partials.monav-admin />
-
     @elseif (auth()->user()->isGuru())
         <x-partials.monav-guru />
-
-    @else 
-    <x-partials.monav-admin
-    @endif
+    @else
+        <x-partials.monav-admin @endif
 
 </nav>'

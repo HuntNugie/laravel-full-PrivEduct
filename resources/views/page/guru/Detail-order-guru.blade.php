@@ -275,9 +275,7 @@
                             <div>
                                 <p class="text-sm text-stone-500">Konfirmasi pembelajaran</p>
                                 <button
-                                    class="mt-2 inline-flex border cursor:pointer bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-700">Menunggu
-                                    Konfirmasi</button>
-
+                                    class="mt-2 inline-flex border cursor:pointer bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-700">Konfirmasi pembelajaran</button>
 
                             </div>
 
@@ -294,4 +292,5 @@
 
     </div>
 
+    <x-partials.modal-confirm-belajar/>
 </x-app-layout>

@@ -4,17 +4,28 @@ namespace App\Livewire;
 
 use App\Service\CheckoutService;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DaftarCheckoutUser extends Component
 {
-    public $checkouts;
+    public String $search = "";
+    use WithPagination;
 
-    public function mount(CheckoutService $service){
-        $this->checkouts = $service->getData();
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
     public function render()
     {
-        
-        return view('livewire.daftar-checkout-user');
+        $userId = auth()->user()->id;
+        $checkouts = auth()->user()->orders()->latest()->paginate(5);
+        if( $this->search != ""){
+            $checkouts = auth()->user()->orders()->whereHas("guru",function($query){
+                $query->whereHas("User",function($query){
+                    $query->where("name","like","%".$this->search."%");
+                });
+            })->latest()->paginate(5);
+        }
+        return view('livewire.daftar-checkout-user', ["checkouts" => $checkouts]);
     }
 }
