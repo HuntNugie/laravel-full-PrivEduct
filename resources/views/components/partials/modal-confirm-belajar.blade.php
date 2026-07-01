@@ -15,7 +15,7 @@
               Tutup
           </x-secondary-button>
 
-          <x-button class="ml-2 bg-green-500" wire:click="confirmBelajar({{ $id }})">
+          <x-button class="ml-2 bg-green-500" wire:click="">
               Ya, saya yakin
           </x-button>
       </x-slot>

@@ -23,7 +23,11 @@
             <p class="mt-3 text-stone-600">
                 Informasi siswa yang mengajukan booking kepada Anda.
             </p>
-
+            @if(session()->has('success'))
+                <div class="mt-4 rounded-lg bg-green-100 px-4 py-3 text-green-700">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
         </div>
 
         <div class="mt-10 grid gap-8 lg:grid-cols-3">
@@ -274,9 +278,11 @@
 
                             <div>
                                 <p class="text-sm text-stone-500">Konfirmasi pembelajaran</p>
-                                <button
-                                    class="mt-2 inline-flex border cursor:pointer bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-700">Konfirmasi pembelajaran</button>
-
+                                <form action="{{ route("order.confirm",$order->id) }}" method="post">
+                                    @csrf
+                                    <button
+                                        class="mt-2 inline-flex border cursor:pointer bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-700">Konfirmasi pembelajaran</button>
+                                </form>
                             </div>
 
 
@@ -292,5 +298,4 @@
 
     </div>
 
-    <x-partials.modal-confirm-belajar/>
 </x-app-layout>

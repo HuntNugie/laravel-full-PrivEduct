@@ -74,7 +74,13 @@ Route::middleware([
             Route::prefix("order")->group(function () {
                 Route::get("/", [OrderController::class, "index"])->name("order.index");
                 Route::get("/{order}", [OrderController::class, "show"])->name("order.show");
-            });
+                // untuk konfirmasi pembelajaran
+                Route::post("/{order}/confirm",[OrderController::class,"confirmBelajar"])->name("order.confirm");
+      
+                });
+
+
+      
         });
     });
 
