@@ -80,7 +80,7 @@
                         </h3>
 
                         <p class="text-sm text-stone-500">
-                            per jam
+                            per Sesi
                         </p>
 
                     </div>
