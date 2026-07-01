@@ -40,8 +40,8 @@ class TransactionsController extends Controller
             Log::info("masuk kesini");
             return response()->json(['message' => 'Invalid signature'], 403);
         }
-
-        $order = $this->service->getTransactionById($payload['order_id']);
+        $idOrder = explode("@", $payload['order_id'])[1];
+        $order = $this->service->getTransactionById($idOrder);
 
         if (!$order || !$order->order) {
             return response()->json(['message' => 'Order not found'], 404);
