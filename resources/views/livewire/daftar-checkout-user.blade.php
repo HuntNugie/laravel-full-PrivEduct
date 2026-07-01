@@ -7,8 +7,8 @@
                 <p class="text-sm font-medium text-orange-500">
                     Search Guru
                 </p>
-                <h2 class="mt-2 text-xl font-semibold text-stone-800"  >
-                    Booking 
+                <h2 class="mt-2 text-xl font-semibold text-stone-800">
+                    Booking
                 </h2>
             </div>
         </div>
@@ -16,13 +16,14 @@
         <div class="mt-6 grid gap-6">
 
             <div class="grid gap-4">
-        
+
                 <div>
                     <label class="text-sm font-medium text-stone-500" for="teacher-search">
                         Cari Guru
                     </label>
 
-                    <input id="teacher-search" type="search" placeholder="Cari nama guru..." wire:model.live.debounce.500ms="search"
+                    <input id="teacher-search" type="search" placeholder="Cari nama guru..."
+                        wire:model.live.debounce.500ms="search"
                         class="mt-3 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100" />
                 </div>
             </div>

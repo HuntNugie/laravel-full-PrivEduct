@@ -8,6 +8,7 @@ use App\Service\CheckoutService;
 use App\Service\MidtransService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -31,7 +32,7 @@ class CheckoutController extends Controller
 
         $params = [
             'transaction_details' => [
-                'order_id' => $result->id,
+                'order_id' => "ORDER-".Str::uuid()."@".$result->id,
                 'gross_amount' => intval($order->tarif),
             ],
             'customer_details' => [
