@@ -7,27 +7,45 @@
                 </p>
             </div>
             <div class="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:w-auto lg:grid-cols-6">
-                <button class="rounded-2xl bg-stone-900 px-4 py-2 text-sm font-medium text-white">
+                <button wire:click="filterSemuaStatus" @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                "bg-stone-900 text-white" => $filter === "all",
+                "border border-stone-300 bg-white text-stone-700" => $filter !== "all"
+                ])>
                     Semua
                 </button>
-                <button
-                    class="rounded-2xl border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700">
+                <button wire:click="filterMenungguStatus"
+                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                    "bg-stone-900 text-white" => $filter === "pending",
+                    "border border-stone-300 bg-white text-stone-700" => $filter !== "pending"
+                    ])>
                     Menunggu
                 </button>
-                <button
-                    class="rounded-2xl border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700">
+                <button wire:click="filterDiterimaStatus"
+                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                    "bg-stone-900 text-white" => $filter === "accepted",
+                    "border border-stone-300 bg-white text-stone-700" => $filter !== "accepted"
+                    ])>
                     Diterima
                 </button>
-                <button
-                    class="rounded-2xl border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700">
+                <button wire:click="filterDibayarStatusBayar"
+                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                    "bg-stone-900 text-white" => $filter === "paid",
+                    "border border-stone-300 bg-white text-stone-700" => $filter !== "paid"
+                    ])>
                     Dibayar
                 </button>
-                <button
-                    class="rounded-2xl border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700">
+                <button wire:click="filterBelajarStatusBelajar"
+                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                    "bg-stone-900 text-white" => $filter === "belajar",
+                    "border border-stone-300 bg-white text-stone-700" => $filter !== "belajar"
+                    ])>
                     Belajar
                 </button>
-                <button
-                    class="rounded-2xl border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700">
+                <button wire:click="filterDitolakStatus"
+                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                    "bg-stone-900 text-white" => $filter === "rejected",
+                    "border border-stone-300 bg-white text-stone-700" => $filter !== "rejected"
+                    ])>
                     Ditolak
                 </button>
             </div>

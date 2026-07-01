@@ -67,10 +67,11 @@
                         <!-- Submit -->
                         <div class="flex justify-end">
 
-                            <button type="submit"
+                            <button type="submit" wire:loading.attr="disabled"
                                 class="rounded-2xl bg-orange-500 px-6 py-3 text-sm font-medium text-white transition hover:bg-orange-600">
 
-                                Ajukan Booking
+                                <span wire:loading.remove> Ajukan Booking </span>
+                                <span wire:loading> Sedang diproses... </span>
 
                             </button>
 

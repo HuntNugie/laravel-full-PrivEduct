@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\notifGuruBooking;
 use App\Models\Order;
 use App\Service\CheckoutService;
 use App\Service\MidtransService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -49,8 +51,7 @@ class CheckoutController extends Controller
         // buat snap token nya terlebih dahulu
         $token = $this->midtrans->createSnapToken($params);
 
-        $result->update(["snap_token" => $token,"amount"=>$order->tarif]);
-
+        $result->update(["snap_token" => $token,"amount"=>$order->tarif]); 
         return view("page.user.Payment", ["snap_token" => $token, "order" => $order]);
     }
 }

@@ -1,11 +1,14 @@
-<?php namespace App\Service;
+<?php
+namespace App\Service;
 
 use App\Models\Order;
 
 class OrderService
 {
- public function createOrder(array $data, int $guruId, int $userId):Order
+    private $filter = "";
+    public function createOrder(array $data, int $guruId, int $userId): Order
     {
+
         $order = Order::create([
             "guru_id" => $guruId,
             "user_id" => $userId,
@@ -17,11 +20,13 @@ class OrderService
 
         return $order;
 
-    }   
+    }
 
-    public function getOrder(){
+ 
+    public function getOrder()
+    {
         $guru = auth()->user()->guru;
-        $orders = $guru->orders()->with("user")->get();
+        $orders = $guru->orders()->with("user")->latest()->get();
         return $orders;
     }
 

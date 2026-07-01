@@ -2,9 +2,12 @@
 
 namespace App\Livewire;
 
+use App\Mail\notifGuruBooking;
 use Livewire\Component;
 use App\Models\Guru;
 use App\Service\OrderService;
+use Illuminate\Support\Facades\Mail;
+
 class FormCheckout extends Component
 {
     public Guru $guru;
@@ -28,6 +31,7 @@ class FormCheckout extends Component
         
 
         $order = $checkoutService->createOrder($data, $this->guru->id, auth()->user()->id);
+        Mail::to($order->guru->user->email)->send(new notifGuruBooking($order));
         
         $this->show = true;
     }

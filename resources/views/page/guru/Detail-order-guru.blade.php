@@ -110,20 +110,32 @@
                             </p>
 
                         </div>
+                        <div>
+
+                            <p class="text-sm text-stone-500">
+                                Alamat
+                            </p>
+
+                            <p class="mt-2 leading-7 text-stone-700">
+                                {{ $order->user->user_profile->alamat }}
+                            </p>
+
+                        </div>
+                        <div>
+
+                            <p class="text-sm text-stone-500">
+                                Pendidikan
+                            </p>
+
+                            <p class="mt-2 leading-7 text-stone-700">
+                                {{ $order->user->user_profile->pendidikan }}
+                            </p>
+
+                        </div>
 
                     </div>
 
-                    <div class="mt-8">
 
-                        <p class="text-sm text-stone-500">
-                            Alamat
-                        </p>
-
-                        <p class="mt-2 leading-7 text-stone-700">
-                            {{ $order->user->user_profile->alamat }}
-                        </p>
-
-                    </div>
 
                 </div>
 
@@ -243,7 +255,7 @@
                         <div class="mt-3 rounded-2xl bg-stone-50 p-5">
 
                             <p class="leading-7 text-stone-700">
-                               {{$order->catatan}}
+                                {{ $order->catatan }}
                             </p>
 
                         </div>
@@ -251,6 +263,30 @@
                     </div>
 
                 </div>
+                @if ($order->status_belajar == 'booking')
+                    <div class="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
+
+                        <h2 class="text-xl font-semibold text-stone-800">
+                            Informasi belajar
+                        </h2>
+
+                        <div class="mt-8 grid gap-6 md:grid-cols-2">
+
+                            <div>
+                                <p class="text-sm text-stone-500">Konfirmasi pembelajaran</p>
+                                <button
+                                    class="mt-2 inline-flex border cursor:pointer bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-700">Menunggu
+                                    Konfirmasi</button>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                @endif
 
             </div>
 
