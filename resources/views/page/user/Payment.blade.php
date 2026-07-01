@@ -25,7 +25,7 @@
                 <div class="space-y-6">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         <div class="flex-shrink-0">
-                            <img src="{{ asset("/storage/".$order->guru->posting->foto_cover) }}"
+                            <img src="{{ asset('/storage/' . $order->guru->posting->foto_cover) }}"
                                 class="w-24 h-24 rounded-full object-cover border" alt="Guru">
                         </div>
                         <div class="w-full text-sm space-y-4">
@@ -51,7 +51,8 @@
 
                             <div class="flex justify-between">
                                 <span class="text-stone-500">Tarif</span>
-                                <span class="font-bold text-orange-600">Rp {{ number_format($order->tarif,0,",",) }} / sesi</span>
+                                <span class="font-bold text-orange-600">Rp {{ number_format($order->tarif, 0, ',') }} /
+                                    sesi</span>
                             </div>
                         </div>
                     </div>
@@ -63,7 +64,7 @@
                         </div>
                         <div
                             class="min-h-[130px] rounded-2xl border border-stone-200 bg-stone-50 p-4 text-stone-700 leading-relaxed">
-                           {{$order->catatan}}
+                            {{ $order->catatan }}
                         </div>
                     </div>
                 </div>
@@ -82,16 +83,16 @@
                             </div>
                             <div class="flex justify-between">
                                 <span>Harga per Sesi</span>
-                                <span>Rp {{ number_format($order->tarif,0,",",) }}</span>
+                                <span>Rp {{ number_format($order->tarif, 0, ',') }}</span>
                             </div>
-                         
+
                         </div>
                     </div>
 
                     <div class="mt-6">
                         <div class="flex justify-between items-center text-xl font-bold text-stone-800">
                             <span>Total</span>
-                            <span>Rp {{ number_format($order->tarif,0,",",) }}</span>
+                            <span>Rp {{ number_format($order->tarif, 0, ',') }}</span>
                         </div>
 
                         <button id="pay-button"
@@ -113,18 +114,19 @@
 
         <script>
             const button = document.getElementById("pay-button");
-            button.addEventListener("click",()=>{
-                snap.pay("{{ $snap_token }}",{
-                    onSuccess:(result)=>{
-                        window.location.href="{{ route('dashboard') }}"
+            button.addEventListener("click", () => {
+                snap.pay("{{ $snap_token }}", {
+                    onSuccess: function(result) {
+                        console.log(result);
+                        alert(JSON.stringify(result, null, 2));
                     },
-                    onPending:(result)=>{
-                        window.location.href="{{ route('user.checkout.index') }}"
+                    onPending: function(result) {
+                        console.log(result);
                     },
-                    onError:()=>{
-                        alert("payment gagal");
+                    onError: function(result) {
+                        console.log(result);
                     }
-                })
+                });
             })
         </script>
     @endpush
