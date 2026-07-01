@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\notifKonfirmasiBelajar;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -18,6 +20,7 @@ class OrderController extends Controller
     public function confirmBelajar(Order $order){
         // update status order menjadi selesai
         $order->update(["status_belajar"=>"completed"]);
+        Mail::to($order->user->email)->send(new notifKonfirmasiBelajar($order));
         return redirect()->route("order.show",$order->id)->with("success","Pembelajaran telah dikonfirmasi");
     }
 }
