@@ -6,48 +6,52 @@
                 <p class="mt-1 text-sm text-stone-500">Kelola pesanan siswa dengan tampilan yang lebih rapi dan simetris.
                 </p>
             </div>
-            <div class="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:w-auto lg:grid-cols-6">
-                <button wire:click="filterSemuaStatus" @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
-                "bg-stone-900 text-white" => $filter === "all",
-                "border border-stone-300 bg-white text-stone-700" => $filter !== "all"
-                ])>
-                    Semua
-                </button>
-                <button wire:click="filterMenungguStatus"
-                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
-                    "bg-stone-900 text-white" => $filter === "pending",
-                    "border border-stone-300 bg-white text-stone-700" => $filter !== "pending"
+            <div class="grid w-full gap-3 lg:w-auto">
+                <input type="text" wire:model.live.debounce.500ms="search" placeholder="Cari order..."
+                    class="w-full rounded-2xl border border-stone-300 bg-white px-4 py-2 text-sm text-stone-700 shadow-sm focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-100" />
+                <div class="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:w-auto lg:grid-cols-6">
+                    <button wire:click="filterSemuaStatus" @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                    "bg-stone-900 text-white" => $filter === "all",
+                    "border border-stone-300 bg-white text-stone-700" => $filter !== "all"
                     ])>
-                    Menunggu
-                </button>
-                <button wire:click="filterDiterimaStatus"
-                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
-                    "bg-stone-900 text-white" => $filter === "accepted",
-                    "border border-stone-300 bg-white text-stone-700" => $filter !== "accepted"
-                    ])>
-                    Diterima
-                </button>
-                <button wire:click="filterDibayarStatusBayar"
-                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
-                    "bg-stone-900 text-white" => $filter === "paid",
-                    "border border-stone-300 bg-white text-stone-700" => $filter !== "paid"
-                    ])>
-                    Dibayar
-                </button>
-                <button wire:click="filterBelajarStatusBelajar"
-                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
-                    "bg-stone-900 text-white" => $filter === "belajar",
-                    "border border-stone-300 bg-white text-stone-700" => $filter !== "belajar"
-                    ])>
-                    Belajar
-                </button>
-                <button wire:click="filterDitolakStatus"
-                    @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
-                    "bg-stone-900 text-white" => $filter === "rejected",
-                    "border border-stone-300 bg-white text-stone-700" => $filter !== "rejected"
-                    ])>
-                    Ditolak
-                </button>
+                        Semua
+                    </button>
+                    <button wire:click="filterMenungguStatus"
+                        @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                        "bg-stone-900 text-white" => $filter === "pending",
+                        "border border-stone-300 bg-white text-stone-700" => $filter !== "pending"
+                        ])>
+                        Menunggu
+                    </button>
+                    <button wire:click="filterDiterimaStatus"
+                        @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                        "bg-stone-900 text-white" => $filter === "accepted",
+                        "border border-stone-300 bg-white text-stone-700" => $filter !== "accepted"
+                        ])>
+                        Diterima
+                    </button>
+                    <button wire:click="filterDibayarStatusBayar"
+                        @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                        "bg-stone-900 text-white" => $filter === "paid",
+                        "border border-stone-300 bg-white text-stone-700" => $filter !== "paid"
+                        ])>
+                        Dibayar
+                    </button>
+                    <button wire:click="filterBelajarStatusBelajar"
+                        @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                        "bg-stone-900 text-white" => $filter === "belajar",
+                        "border border-stone-300 bg-white text-stone-700" => $filter !== "belajar"
+                        ])>
+                        Belajar
+                    </button>
+                    <button wire:click="filterDitolakStatus"
+                        @class(["rounded-2xl px-4 py-2 text-sm font-medium ",
+                        "bg-stone-900 text-white" => $filter === "rejected",
+                        "border border-stone-300 bg-white text-stone-700" => $filter !== "rejected"
+                        ])>
+                        Ditolak
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -141,10 +145,16 @@
                     @if ($order->status === 'pending')
                     <button
                         class="rounded-2xl bg-green-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-green-700"
-                        wire:click="acceptOrder({{ $order->id }})">Terima Booking</button>
+                        wire:click="acceptOrder({{ $order->id }})" wire:target="status" wire:loading.attr="disabled">
+                        <span wire:loading.remove>Terima Booking</span>
+                        <span wire:loading>Memproses...</span>
+                    </button>
                     <button
                         class="rounded-2xl bg-red-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-red-700"
-                        wire:click="rejectOrder({{ $order->id }})">Tolak Booking</button>
+                        wire:click="rejectOrder({{ $order->id }})">
+                        <span wire:loading.remove>Tolak Booking</span>
+                        <span wire:loading>Memproses...</span>
+                    </button>
                     @endif
                     <a href="{{ route('order.show', $order->id) }}"
                         class="rounded-2xl bg-blue-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-700">Detail
@@ -156,5 +166,6 @@
                 Belum ada order untuk ditampilkan.
             </div>
         @endforelse
+        <div class="m-3">{{ $orders->links() }}</div>
     </div>
 </div>

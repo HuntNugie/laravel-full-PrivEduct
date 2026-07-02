@@ -9,7 +9,7 @@
             </p>
 
             <h1 class="mt-2 text-3xl font-semibold text-stone-800">
-                Konfirmasi Pembayaran Home Schooling
+                Konfirmasi Pembayaran Private education
             </h1>
 
             <p class="mt-2 text-stone-600">

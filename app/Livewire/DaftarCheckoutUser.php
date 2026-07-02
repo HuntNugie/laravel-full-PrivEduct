@@ -17,7 +17,6 @@ class DaftarCheckoutUser extends Component
     }
     public function render()
     {
-        $userId = auth()->user()->id;
         $checkouts = auth()->user()->orders()->latest()->paginate(5);
         if( $this->search != ""){
             $checkouts = auth()->user()->orders()->whereHas("guru",function($query){
