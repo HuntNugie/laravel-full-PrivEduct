@@ -24,15 +24,18 @@ class CheckoutController extends Controller
 
     public function paymentShow(Order $order)
     {
+        $order_id = "ORDER-" . Str::uuid() . "@" . $order->id;
         $data = [
-            "amount" => $order["tarif"]
+            "amount" => $order["tarif"],
+            "midtrans_transaction_id" => $order_id,
         ];
+
         $result = $this->service->createTransaction($data, $order);
 
 
         $params = [
             'transaction_details' => [
-                'order_id' => "ORDER-".Str::uuid()."@".$result->id,
+                'order_id' => $order_id,
                 'gross_amount' => intval($order->tarif),
             ],
             'customer_details' => [
@@ -44,15 +47,16 @@ class CheckoutController extends Controller
                     'id' => 'GR-' . $order->id,
                     'price' => intval($order->tarif),
                     'quantity' => 1,
-                    'name' => 'Home Schooling - ' . $order->guru->user->name
+                    'name' => 'PrivEduct - ' . $order->guru->user->name
                 ]
             ]
         ];
 
+
         // buat snap token nya terlebih dahulu
         $token = $this->midtrans->createSnapToken($params);
 
-        $result->update(["snap_token" => $token,"amount"=>$order->tarif]); 
+        $result->update(["snap_token" => $token, "amount" => $order->tarif]);
         return view("page.user.Payment", ["snap_token" => $token, "order" => $order]);
     }
 }

@@ -1,9 +1,10 @@
 <?php
 namespace App\Service;
 
+use Exception;
 use Midtrans\Config;
 use Midtrans\Snap;
-
+use Midtrans\Transaction;
 class MidtransService
 {
     public function __construct()
@@ -16,8 +17,14 @@ class MidtransService
         Config::$is3ds = true;
     }
 
-    public function createSnapToken(array $params){
-        return Snap::getSnapToken($params);
+    public function createSnapToken(array $params)
+    {
+        try {
+            $token = Snap::getSnapToken($params);
+            return $token;
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
     }
- 
+
 }

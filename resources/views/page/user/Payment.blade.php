@@ -116,10 +116,11 @@
             button.addEventListener("click",()=>{
                 snap.pay("{{ $snap_token }}",{
                     onSuccess:(result)=>{
-                        window.location.href="{{ route('user.checkout.index') }}"
+                        console.log(result);
+                        // window.location.href="{{ route('user.checkout.index') }}"
                     },
                     onPending:(result)=>{
-                        window.location.href="{{ route('user.checkout.index') }}"
+                        window.location.href="{{ route('dashboard') }}"
                     },
                     onError:()=>{
                         alert("payment gagal");
