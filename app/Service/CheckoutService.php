@@ -11,7 +11,6 @@ class CheckoutService{
     public function createTransaction(array $data,Order $order){
         return $order->transactions()->create([
             "amount" => $data["amount"],
-            "midtrans_transaction_id" => $data["midtrans_transaction_id"],
         ]);
     }
 

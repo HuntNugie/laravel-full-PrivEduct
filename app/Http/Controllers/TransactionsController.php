@@ -42,7 +42,7 @@ class TransactionsController extends Controller
         }
         $idOrder = explode("@", $payload['order_id'])[1];
         $order = $this->service->getTransactionById($idOrder);
-
+        Log::info($order);
         if (!$order || !$order->order) {
             return response()->json(['message' => 'Order not found'], 404);
         }

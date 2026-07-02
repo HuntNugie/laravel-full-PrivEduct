@@ -24,13 +24,13 @@ class CheckoutController extends Controller
 
     public function paymentShow(Order $order)
     {
-        $order_id = "ORDER-" . Str::uuid() . "@" . $order->id;
         $data = [
             "amount" => $order["tarif"],
-            "midtrans_transaction_id" => $order_id,
+
         ];
 
         $result = $this->service->createTransaction($data, $order);
+        $order_id = "ORDER-" . Str::uuid() . "@" . $result->id;
 
 
         $params = [
