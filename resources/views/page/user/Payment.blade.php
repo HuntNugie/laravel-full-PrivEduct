@@ -117,7 +117,7 @@
                 snap.pay("{{ $snap_token }}",{
                     onSuccess:(result)=>{
                         console.log(result);
-                        // window.location.href="{{ route('user.checkout.index') }}"
+                        window.location.href="{{ route('user.checkout.index') }}"
                     },
                     onPending:(result)=>{
                         window.location.href="{{ route('dashboard') }}"
