@@ -25,6 +25,6 @@ class PostingService
 
     public function getPostinganPublished()
     {
-        return Posting::with("guru.user")->where("status_publish","published")->get();
+        return Posting::where("status_publish","published");
     }
 }

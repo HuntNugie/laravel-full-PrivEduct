@@ -11,7 +11,7 @@
                      Cari Guru
                  </label>
 
-                 <input type="text" placeholder="Cari nama guru atau mata pelajaran..."
+                 <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari nama guru..."
                      class="mt-3 w-full h-16 px-6 rounded-2xl border border-slate-200 outline-none focus:border-orange-500">
 
              </div>
@@ -23,13 +23,12 @@
                      Mata Pelajaran
                  </label>
 
-                 <select
+                 <select wire:model.live="MapelId"
                      class="mt-3 w-full h-16 px-6 rounded-2xl border border-slate-200 outline-none focus:border-orange-500 bg-white">
-                     <option>Semua Pelajaran</option>
-                     <option>Matematika</option>
-                     <option>Bahasa Inggris</option>
-                     <option>Programming</option>
-                     <option>Fisika</option>
+                     <option value="0">Semua Pelajaran</option>
+                     @foreach ($mataPelajaran as $mapel)
+                         <option value="{{ $mapel->id }}">{{ $mapel->nama_mapel }}</option>
+                     @endforeach
                  </select>
 
              </div>
@@ -38,14 +37,14 @@
              <div>
 
                  <label class="text-sm font-bold text-slate-700">
-                     Sistem Belajar
+                     Metode belajar
                  </label>
 
-                 <select
+                 <select wire:model.live="metode"
                      class="mt-3 w-full h-16 px-6 rounded-2xl border border-slate-200 outline-none focus:border-orange-500 bg-white">
-                     <option>Semua</option>
-                     <option>Online</option>
-                     <option>Offline</option>
+                     <option value="">Semua</option>
+                     <option value="online">Online</option>
+                     <option value="offline">Offline</option>
                  </select>
 
              </div>
@@ -101,7 +100,7 @@
                      </div>
 
                      <p class="mt-6 text-slate-600 leading-8">
-                         {{$guru->caption}}
+                         {{ $guru->caption }}
                      </p>
 
                      <!-- TAG -->
@@ -135,7 +134,7 @@
 
                          </div>
 
-                         <a href="{{ auth()->check() ? route("guru.user.show", $guru->guru->id) : route("login") }}"
+                         <a href="{{ auth()->check() ? route('guru.user.show', $guru->guru->id) : route('login') }}"
                              class="px-6 py-4 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-xl shadow-orange-200 transition">
 
                              Lihat Profile
@@ -152,7 +151,11 @@
              <!-- nanti tinggal looping -->
 
          @empty
-
+             <div class="col-span-3 text-center py-20">
+                 <h3 class="text-2xl font-bold text-slate-900">
+                     Tidak ada guru yang ditemukan
+                 </h3>
+             </div>
          @endforelse
      </div>
 
